@@ -27,7 +27,9 @@
   },
   "scripts": {
     "dev": "cross-env NODE_ENV=development webpack --config build/webpack.config.js",
-    "dev-server": "cross-env NODE_ENV=development webpack-dev-server --config build/webpack.config.js",
+    "watch": "cross-env NODE_ENV=development webpack --config build/webpack.config.js --watch",
+    "docker:dev-server": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --watch-poll --config build/webpack.config.js",
+    "dev-server": "cross-env NODE_ENV=development webpack-dev-server --host 0.0.0.0 --config build/webpack.config.js",
     "prod": "cross-env NODE_ENV=production webpack --config build/webpack.config.js"
   }
 }

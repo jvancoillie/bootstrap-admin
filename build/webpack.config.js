@@ -14,6 +14,9 @@ module.exports = {
         filename: '[name].js',
         publicPath:  "/"
     },
+    devServer: {
+        contentBase: path.resolve(__dirname, '../dist')
+    },
     devtool: 'source-map',
     plugins: [
         new CleanWebpackPlugin([

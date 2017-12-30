@@ -1,0 +1,14 @@
+node_modules
+releases
+
+*~
+*#
+.DS_STORE
+Thumbs.db
+.idea
+.node_history
+.tmp
+
+*.iml
+/dist
+/.env

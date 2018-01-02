@@ -1,0 +1,28 @@
+.page-loader {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-color: rgba(0, 0, 0, .96);
+  z-index: 999999;
+  align-items: center;
+  justify-content: center;
+  display: flex
+}
+
+.page-loader svg path,
+.page-loader svg rect{
+  fill: var(--primary, $primary);
+}
+
+.loader{
+  margin: 0 0 2em;
+  height: 100px;
+  width: 20%;
+  text-align: center;
+  padding: 1em;
+  margin: 0 auto 1em;
+  display: inline-block;
+  vertical-align: top;
+}

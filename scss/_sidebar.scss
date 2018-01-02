@@ -1,0 +1,200 @@
+/***********************************
+ *   Sidebar
+ ***********************************/
+$navbar-dark-color-bg: #333e48;
+$sidebar-bg: #3a4651;
+$navbar-light-color: rgba(255, 255, 255, 0.5);
+$siderbar-width:250px;
+
+@mixin fa-icon() {
+  display: inline-block;
+  font: normal normal normal #{$fa-font-size-base}/#{$fa-line-height-base} FontAwesome; // shortening font declaration
+  font-size: inherit; // can't have font-size inherit on line above, so need to override
+  text-rendering: auto; // optimizelegibility throws things off #1094
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+}
+
+$navbar-height: $nav-link-height + $nav-link-padding-y * 2;
+.sidebar {
+  position: fixed;
+  width: $siderbar-width;
+  top: $navbar-height;
+  height: calc(100vh - #{$navbar-height});
+  left: 0;
+  z-index: 101;
+  background-color: $sidebar-bg;
+  display: flex;
+  flex-direction: column;
+
+  .navbar-brand {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-top: $navbar-brand-padding-y;
+    padding-bottom: $navbar-brand-padding-y;
+    font-size: $navbar-brand-font-size;
+    height: $navbar-brand-height;
+    width: 100%;
+    line-height: inherit;
+    white-space: nowrap;
+    justify-content: center;
+
+    @include hover-focus {
+      text-decoration: none;
+    }
+  }
+  &::-webkit-scrollbar {
+    width: 14px;
+    height: 18px;
+    // background-color: rgba(0, 0, 0, 0);
+    background: transparent;
+    // background-color: none;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    height: 6px;
+    border: 4px solid rgba(0, 0, 0, 0);
+    background-clip: padding-box;
+    -webkit-border-radius: 7px;
+    -webkit-box-shadow: none;
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+
+  &:hover {
+    &::-webkit-scrollbar-thumb {
+      background-color: var(--primary, $primary);
+      -webkit-box-shadow: inset -1px -1px 0px rgba(0, 0, 0, 0.05), inset 1px 1px 0px rgba(0, 0, 0, 0.05);
+    }
+  }
+
+
+  .navbar-nav {
+    padding-left: 0;
+    margin-bottom: 0;
+    list-style: none;
+
+    width: 100%;
+
+    .nav-link {
+      width: 100%;
+      padding: .5rem 2rem .5rem 2rem;
+      position: relative;
+
+      &[data-toggle="collapse"] {
+
+        &::after {
+          @include fa-icon();
+          display: block;
+          content: "\f054";
+          font-size: .8em;
+          position: absolute;
+          right: 10px;
+          top: 50%;
+          margin-top: 2px;
+          transition: transform .3s ease;
+          transform: translate(0, -50%);
+        }
+        &:not(.collapsed):after {
+          transform: translate(0, -50%) rotate(90deg);
+
+        }
+
+      }
+    }
+
+    .dropdown-menu {
+      position: static;
+      float: none;
+    }
+  }
+
+  .navbar-collapse {
+    // For always expanded or extra full navbars, ensure content aligns itself
+    // properly vertically. Can be easily overridden with flex utilities.
+    align-items: normal;
+    display: block !important;
+    flex-direction: column;
+    overflow-y: auto;
+    height: calc(100vh - #{$navbar-height}*2);
+  }
+  // White links against a dark background
+  &.navbar-dark {
+    .navbar-brand {
+      color: $navbar-dark-active-color;
+
+      &:focus,
+      &:hover {
+        color: $navbar-dark-active-color;
+      }
+    }
+    .user {
+      color: $navbar-dark-active-color;
+      text-align: center;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .navbar-nav {
+      .nav-link {
+        color: $navbar-dark-color;
+
+        &:focus,
+        &:hover {
+          color: $navbar-dark-hover-color;
+          //background-color: var(--primary, $primary);
+        }
+
+        &.disabled {
+          color: $navbar-dark-disabled-color;
+        }
+      }
+      .show > .nav-link,
+      .nav-link[data-toggle="collapse"]:not(.collapsed),
+      .sub-nav-item > .nav-link,
+      .sub-nav-item {
+        background-color: $navbar-dark-color-bg;
+        color: $navbar-dark-color;
+      }
+      .sub-nav-item > .nav-link:hover {
+        color: $navbar-dark-hover-color;
+      }
+      .active > .nav-link,
+      .nav-link.show,
+      .nav-link.active {
+        color: $navbar-dark-active-color;
+        background-color: var(--primary, $primary);
+      }
+
+    }
+
+    .navbar-toggler {
+      color: $navbar-dark-color;
+      border-color: $navbar-dark-toggler-border-color;
+    }
+
+    .navbar-toggler-icon {
+      background-image: $navbar-dark-toggler-icon-bg;
+    }
+
+    .navbar-text {
+      color: $navbar-dark-color;
+      a {
+        color: $navbar-dark-active-color;
+
+        @include hover-focus {
+          color: $navbar-dark-active-color;
+        }
+      }
+    }
+  }
+
+  footer{
+    border-top: 1px solid rgba(0, 0, 0, 0.1);
+    width: $siderbar-width;
+    height: $navbar-height;
+    bottom: 0;
+  }
+
+}
+

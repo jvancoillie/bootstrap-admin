@@ -1,2 +1,11 @@
-@import 'custom';
+$fa-font-path: "~font-awesome/fonts/";
+@import 'variables';
+
+@import "~font-awesome/scss/font-awesome.scss";
+@import "~animate.css/animate.css";
+
 @import "~bootstrap/scss/bootstrap.scss";
+
+@import "scrollbar";
+@import "page-loader";
+@import "sidebar";

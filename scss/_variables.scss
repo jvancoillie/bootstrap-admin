@@ -5,3 +5,7 @@ $font-family-sans-serif:      'Nunito', -apple-system, BlinkMacSystemFont, "Sego
 $font-family-monospace:       SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !default;
 $font-family-base:            $font-family-sans-serif !default;
 // stylelint-enable value-keyword-case
+
+
+//bootstrap variable override
+$body-bg: rgb(240, 243, 246);
